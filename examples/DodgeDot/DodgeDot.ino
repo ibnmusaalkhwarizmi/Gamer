@@ -45,7 +45,7 @@ void getwait(){
     delay(10);
   }
 }
-void initvars(){
+void initvars(){ //initialise
     for (c=2;c<8;c++) {
     enemies[c] = random(8);
   }
@@ -69,12 +69,12 @@ void tone(uint8_t n){
   gamer.stopTone();
 }
 void loop(){
-  if (score == 100) {
+  if (score == 100) { // win and start again
     gamer.printImage(win);
     delay(1000);
     initvars();
   }
-  if (enemies[0] == player) {
+  if (enemies[0] == player) { // lose and start again
     gamer.printImage(gameover);
     gamer.updateDisplay();
     delay(1000);
@@ -87,11 +87,11 @@ void loop(){
   else if (gamer.isPressed(UP)) {player--;tone(200);}
   player = constrain(player,0,7);
   gamer.clear();
-  gamer.display[0][player]=1;
-  for (c=0;c<8;c++){
+  gamer.display[0][player]=1; // render player
+  for (c=0;c<8;c++){ // render enemies
     gamer.display[c][enemies[c]]=1;
   }
-  for (c=0;c<7;c++) {
+  for (c=0;c<7;c++) { // move enemies towards player
     enemies[c]=enemies[c+1];
   }
   enemies[7] = random(8);
