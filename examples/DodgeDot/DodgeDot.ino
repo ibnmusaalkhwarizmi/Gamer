@@ -2,6 +2,16 @@
 
 int enemies[8],c,player,score;
 int wait=20;
+byte win[8] = {
+  B00000001,
+  B00000010,
+  B00000100,
+  B00001000,
+  B00001000,
+  B10010000,
+  B01010000,
+  B00100000
+};
 byte gameover[8] = {
   B10000001,
   B01000010,
@@ -34,7 +44,6 @@ void getwait(){
     gamer.showScore(wait);
     delay(10);
   }
-  wait*=10;
 }
 void initvars(){
     for (c=2;c<8;c++) {
